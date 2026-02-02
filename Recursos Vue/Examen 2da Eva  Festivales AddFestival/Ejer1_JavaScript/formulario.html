@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Añadir Nuevo Festival</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.2rem;
+    }
+    p {
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1a242f;
+    }
+
+    #datos {
+      margin-top: 2rem;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .festival-info {
+      border-left: 4px solid #2c3e50;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 4px;
+      background: white;
+    } 
+
+    /* Estaciones */
+    .primavera {
+      background-color: #ffcc99; /* naranja claro */
+    }
+    .verano {
+      background-color: #fff9b1; /* amarillo claro */
+    }
+    .otono {
+      background-color: #e6ccb3; /* marroncito claro */
+    }
+    .invierno {
+      background-color: #cceeff; /* azul clarito */
+    }
+  </style>
+</head>
+<body>
+
+  <form id="formularioFestival">
+    <h1>+ Añadir Nuevo Festival</h1>
+    <p>Comparte un nuevo festival con la comunidad</p>
+
+    <label for="nombre">Nombre del Festival</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Ej: Rock en la Playa">
+
+    <label for="mes">Mes del Festival</label>
+    <select id="mes" name="mes">
+      <option value="">Selecciona un mes</option>
+      <option value="enero">Enero</option>
+      <option value="febrero">Febrero</option>
+      <option value="marzo">Marzo</option>
+      <option value="abril">Abril</option>
+      <option value="mayo">Mayo</option>
+      <option value="junio">Junio</option>
+      <option value="julio">Julio</option>
+      <option value="agosto">Agosto</option>
+      <option value="septiembre">Septiembre</option>
+      <option value="octubre">Octubre</option>
+      <option value="noviembre">Noviembre</option>
+      <option value="diciembre">Diciembre</option>
+    </select>
+
+    <label for="pais">País</label>
+    <input type="text" id="pais" name="pais" placeholder="Ej: España">
+
+    <label for="genero">Género Musical</label>
+    <select id="genero" name="genero">
+      <option value="">Selecciona un género</option>
+      <option value="indie">Indie</option>
+      <option value="rock">Rock</option>
+      <option value="pop">Pop</option>
+      <option value="alternativo">Hip hop</option>
+      <option value="electrónica">Electrónica</option>
+      <option value="metal">Metal</option>
+      <option value="punk">Punk</option>
+      <option value="reggae">Reggae</option>
+      <option value="jazz">Jazz</option>
+    </select>
+
+    <label for="precio">Precio (€)</label>
+    <input type="number" id="precio" name="precio" placeholder="Ej: 45" min="0">
+
+    <button type="submit">Añadir Festival 🎵</button>
+  </form>
+
+  <div id="datos"></div>
+
+  <script>
+    class Festival {
+      constructor(nombre, mes, pais, genero, precio) {
+        this.nombre = nombre;
+        this.mes = mes;
+        this.pais = pais;
+        this.genero = genero;
+        this.precio = precio;
+      }
+
+      /* static getEstacion(mes) {
+        const primavera = ["marzo", "abril", "mayo"];
+        const verano = ["junio", "julio", "agosto"];
+        const otono = ["septiembre", "octubre", "noviembre"];
+        const invierno = ["diciembre", "enero", "febrero"];
+
+        if (primavera.includes(mes)) return "primavera";
+        if (verano.includes(mes)) return "verano";
+        if (otono.includes(mes)) return "otono";
+        if (invierno.includes(mes)) return "invierno";
+        return "";
+      } */
+
+      mostrar() {
+        // const estacion = Festival.getEstacion(this.mes);
+        return `
+          <div>
+            <strong>${this.nombre}</strong> (${this.mes}, ${this.pais})<br>
+            Género: ${this.genero} | Precio: €${this.precio}
+          </div>`;
+      }
+    }
+
+    function validarTexto(texto, min, max) {
+      return texto.length >= min && texto.length <= max;
+    }
+
+    function validarFormulario() {
+      const nombre = document.getElementById("nombre").value.trim();
+      const mes = document.getElementById("mes").value;
+      const pais = document.getElementById("pais").value.trim();
+      const genero = document.getElementById("genero").value;
+      const precio = parseFloat(document.getElementById("precio").value);
+
+      if (!validarTexto(nombre, 3, 20)) {
+        alert("El nombre debe tener entre 3 y 20 caracteres.");
+        return false;
+      }
+      if (!mes) {
+        alert("Selecciona un mes.");
+        return false;
+      }
+      if (!validarTexto(pais, 3, 20)) {
+        alert("El país debe tener entre 3 y 20 caracteres.");
+        return false;
+      }
+      if (!genero) {
+        alert("Selecciona un género musical.");
+        return false;
+      }
+      if (isNaN(precio) || precio < 0 || precio > 300) {
+        alert("El precio debe estar entre 0 y 300 euros.");
+        return false;
+      }
+      return true;
+    }
+
+    document.getElementById("formularioFestival").addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (validarFormulario()) {
+        const nombre = document.getElementById("nombre").value.trim();
+        const mes = document.getElementById("mes").value;
+        const pais = document.getElementById("pais").value.trim();
+        const genero = document.getElementById("genero").value;
+        const precio = parseFloat(document.getElementById("precio").value);
+
+        const nuevoFestival = new Festival(nombre, mes, pais, genero, precio);
+        document.getElementById("datos").innerHTML += nuevoFestival.mostrar();
+        document.getElementById("formularioFestival").reset();
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "nombre": "Marte",
+    "clima": "Árido",
+    "distancia": 225,
+    "bandera": "marte.png",
+    "precio": 12500,
+    "duracion": 9,
+    "mesOptimo": 7,
+    "descripcion": "El planeta rojo, hogar del Monte Olimpo, el volcán más grande del sistema solar."
+  },
+  {
+    "id": 2,
+    "nombre": "Júpiter",
+    "clima": "Tormentoso",
+    "distancia": 778,
+    "bandera": "jupiter.png",
+    "precio": 18700,
+    "duracion": 14,
+    "mesOptimo": 9,
+    "descripcion": "El gigante gaseoso con la Gran Mancha Roja, una tormenta más grande que la Tierra."
+  },
+  {
+    "id": 3,
+    "nombre": "Saturno",
+    "clima": "Helado",
+    "distancia": 1427,
+    "bandera": "saturno.png",
+    "precio": 21500,
+    "duracion": 21,
+    "mesOptimo": 8,
+    "descripcion": "Famoso por sus impresionantes anillos compuestos de hielo y roca."
+  },
+  {
+    "id": 4,
+    "nombre": "Venus",
+    "clima": "Extremadamente caliente",
+    "distancia": 108,
+    "bandera": "venus.png",
+    "precio": 9800,
+    "duracion": 7,
+    "mesOptimo": 6,
+    "descripcion": "El planeta más caliente del sistema solar con una densa atmósfera de dióxido de carbono."
+  },
+  {
+    "id": 5,
+    "nombre": "Kepler-186f",
+    "clima": "Templado",
+    "distancia": 492,
+    "bandera": "kepler186f.png",
+    "precio": 32500,
+    "duracion": 180,
+    "mesOptimo": "all",
+    "descripcion": "Un exoplaneta en la zona habitable de su estrella, potencialmente con agua líquida."
+  },
+  {
+    "id": 6,
+    "nombre": "Proxima Centauri b",
+    "clima": "Desconocido",
+    "distancia": 4.2,
+    "bandera": "proxima_b.png",
+    "precio": 42500,
+    "duracion": 120,
+    "mesOptimo": "all",
+    "descripcion": "El exoplaneta más cercano a la Tierra, ubicado en la zona habitable de su estrella."
+  },
+  {
+    "id": 7,
+    "nombre": "Tierra-2",
+    "clima": "Templado",
+    "distancia": 42,
+    "bandera": "tierra2.png",
+    "precio": 28700,
+    "duracion": 90,
+    "mesOptimo": "all",
+    "descripcion": "Un planeta similar a la Tierra con océanos azules y continentes verdes, hogar de una próspera colonia humana."
+  },
+  {
+    "id": 8,
+    "nombre": "Neptuno Azul",
+    "clima": "Gélido",
+    "distancia": 4500,
+    "bandera": "neptuno_azul.png",
+    "precio": 51200,
+    "duracion": 365,
+    "mesOptimo": 12,
+    "descripcion": "Un gigante de hielo con vientos supersónicos y tormentas eternas en su atmósfera profunda."
+  },
+  {
+    "id": 9,
+    "nombre": "Pandora",
+    "clima": "Selvático",
+    "distancia": 4.37,
+    "bandera": "pandora.png",
+    "precio": 38900,
+    "duracion": 150,
+    "mesOptimo": 11,
+    "descripcion": "Una luna boscosa con una rica bioluminiscencia y una atmósfera respirable para los humanos."
+  },
+  {
+    "id": 10,
+    "nombre": "Arrakis",
+    "clima": "Desértico",
+    "distancia": 310,
+    "bandera": "arrakis.png",
+    "precio": 35600,
+    "duracion": 200,
+    "mesOptimo": 10,
+    "descripcion": "El planeta desierto, único productor de la especia, esencial para la navegación interestelar."
+  },
+  {
+    "id": 11,
+    "nombre": "Europa",
+    "clima": "Glaciar",
+    "distancia": 628,
+    "bandera": "europa.png",
+    "precio": 27400,
+    "duracion": 45,
+    "mesOptimo": 3,
+    "descripcion": "Luna de Júpiter con un océano subterráneo de agua salada que podría albergar vida."
+  },
+  {
+    "id": 12,
+    "nombre": "Vulcano",
+    "clima": "Árido",
+    "distancia": 16.5,
+    "bandera": "vulcano.png",
+    "precio": 19800,
+    "duracion": 30,
+    "mesOptimo": 2,
+    "descripcion": "Planeta natal de los vulcanos, con paisajes desérticos y una gravedad ligeramente mayor que la Tierra."
+  }
+]

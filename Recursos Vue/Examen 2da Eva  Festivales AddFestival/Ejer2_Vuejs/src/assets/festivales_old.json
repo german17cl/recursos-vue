@@ -1,0 +1,84 @@
+{
+  "festivales": [
+    {
+      "nombre": "Sonorama Ribera",
+      "pais": "España",
+      "genero": "indie",
+      "mes": "agosto",
+      "imagen": "verano.png",
+      "precio": 85
+    },
+    {
+      "nombre": "Primavera Sound",
+      "pais": "España",
+      "genero": "alternativo",
+      "mes": "junio",
+      "imagen": "verano.png",
+      "precio": 195
+    },
+    {
+      "nombre": "Mad Cool",
+      "pais": "España",
+      "genero": "rock",
+      "mes": "julio",
+      "imagen": "verano.png",
+      "precio": 175
+    },
+    {
+      "nombre": "Coachella",
+      "pais": "Estados Unidos",
+      "genero": "pop",
+      "mes": "abril",
+      "imagen": "primavera.png",
+      "precio": 200
+    },
+    {
+      "nombre": "Tomorrowland",
+      "pais": "Bélgica",
+      "genero": "electrónica",
+      "mes": "julio",
+      "imagen": "verano.png",
+      "precio": 190
+    },
+    {
+      "nombre": "Glastonbury",
+      "pais": "Reino Unido",
+      "genero": "rock",
+      "mes": "junio",
+      "imagen": "verano.png",
+      "precio": 180
+    },
+    {
+      "nombre": "Rock in Rio",
+      "pais": "Brasil",
+      "genero": "rock",
+      "mes": "septiembre",
+      "imagen": "otono.png",
+      "precio": 150
+    },
+    {
+      "nombre": "BBK Live",
+      "pais": "España",
+      "genero": "indie",
+      "mes": "julio",
+      "imagen": "verano.png",
+      "precio": 145
+    },
+    {
+      "nombre": "Lollapalooza",
+      "pais": "Estados Unidos",
+      "genero": "alternativo",
+      "mes": "agosto",
+      "imagen": "verano.png",
+      "precio": 185
+    },
+    {
+      "nombre": "FIB",
+      "pais": "España",
+      "genero": "indie",
+      "mes": "julio",
+      "imagen": "verano.png",
+      "precio": 160
+    }
+  ]
+}

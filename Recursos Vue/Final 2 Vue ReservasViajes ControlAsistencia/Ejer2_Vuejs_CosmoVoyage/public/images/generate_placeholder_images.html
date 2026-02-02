@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generador de imágenes de planetas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .planet-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .planet {
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de imágenes de planetas</h1>
+    <p>Haz clic en el botón para generar imágenes de planetas:</p>
+    
+    <button id="generateBtn">Generar Imágenes</button>
+    
+    <div class="planet-container" id="planetContainer">
+        <!-- Las imágenes se generarán aquí -->
+    </div>
+
+    <script>
+        const planets = [
+            { name: 'marte', color: '#c1440e' },
+            { name: 'jupiter', color: '#e3b04b' },
+            { name: 'saturno', color: '#e3d9b0' },
+            { name: 'venus', color: '#e8c39e' },
+            { name: 'kepler186f', color: '#4a7b9d' },
+            { name: 'proxima_b', color: '#8b5a2b' },
+            { name: 'tierra2', color: '#1a73e8' },
+            { name: 'neptuno_azul', color: '#4169e1' },
+            { name: 'pandora', color: '#2e8b57' },
+            { name: 'arrakis', color: '#d2691e' },
+            { name: 'europa', color: '#87ceeb' },
+            { name: 'vulcano', color: '#b22222' }
+        ];
+
+        function generatePlanetImage(planet) {
+            const container = document.getElementById('planetContainer');
+            const planetDiv = document.createElement('div');
+            planetDiv.className = 'planet';
+            
+            const canvas = document.createElement('canvas');
+            canvas.width = 200;
+            canvas.height = 200;
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Dibujar el planeta
+            const gradient = ctx.createRadialGradient(50, 50, 0, 50, 50, 100);
+            gradient.addColorStop(0, '#ffffff');
+            gradient.addColorStop(1, planet.color);
+            
+            ctx.beginPath();
+            ctx.arc(100, 100, 80, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // Añadir algunos detalles al planeta
+            if (planet.name === 'jupiter') {
+                // Bandas de Júpiter
+                for (let i = 0; i < 5; i++) {
+                    const y = 40 + Math.random() * 120;
+                    const height = 10 + Math.random() * 20;
+                    ctx.fillStyle = `rgba(0, 0, 0, ${0.1 + Math.random() * 0.2})`;
+                    ctx.fillRect(20, y - height/2, 160, height);
+                }
+            } else if (planet.name === 'saturno') {
+                // Anillos de Saturno
+                ctx.save();
+                ctx.beginPath();
+                ctx.ellipse(100, 100, 120, 30, 0, 0, Math.PI * 2);
+                ctx.strokeStyle = '#d4c9a1';
+                ctx.lineWidth = 10;
+                ctx.stroke();
+                ctx.restore();
+            } else if (planet.name === 'tierra2') {
+                // Continentes para Tierra-2
+                ctx.fillStyle = '#2e8b57';
+                ctx.beginPath();
+                ctx.arc(100, 100, 60, 0, Math.PI * 2);
+                ctx.fill();
+                // Nubes
+                for (let i = 0; i < 5; i++) {
+                    const x = 70 + Math.random() * 60;
+                    const y = 70 + Math.random() * 60;
+                    const size = 10 + Math.random() * 15;
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                    ctx.beginPath();
+                    ctx.arc(x, y, size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            } else if (planet.name === 'neptuno_azul') {
+                // Tormentas de Neptuno
+                for (let i = 0; i < 3; i++) {
+                    const x = 70 + Math.random() * 60;
+                    const y = 70 + Math.random() * 60;
+                    const size = 15 + Math.random() * 20;
+                    ctx.fillStyle = '#0000cd';
+                    ctx.beginPath();
+                    ctx.ellipse(x, y, size/2, size, Math.PI/4, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            } else if (planet.name === 'pandora') {
+                // Patrón de selva para Pandora
+                for (let i = 0; i < 50; i++) {
+                    const x = 20 + Math.random() * 160;
+                    const y = 20 + Math.random() * 160;
+                    const size = 2 + Math.random() * 4;
+                    ctx.fillStyle = `hsl(${100 + Math.random() * 40}, 70%, 40%)`;
+                    ctx.fillRect(x, y, size, size);
+                }
+            } else if (planet.name === 'arrakis') {
+                // Patrón de desierto para Arrakis
+                const gradient = ctx.createLinearGradient(0, 0, 200, 200);
+                gradient.addColorStop(0, '#d2b48c');
+                gradient.addColorStop(1, '#a0522d');
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(100, 100, 80, 0, Math.PI * 2);
+                ctx.fill();
+            } else if (planet.name === 'europa') {
+                // Grietas en el hielo de Europa
+                ctx.strokeStyle = '#b0e0e6';
+                ctx.lineWidth = 2;
+                for (let i = 0; i < 8; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(20 + Math.random() * 160, 20 + Math.random() * 160);
+                    for (let j = 0; j < 5; j++) {
+                        ctx.lineTo(20 + Math.random() * 160, 20 + Math.random() * 160);
+                    }
+                    ctx.stroke();
+                }
+            } else if (planet.name === 'vulcano') {
+                // Superficie rocosa de Vulcano
+                for (let i = 0; i < 100; i++) {
+                    const x = Math.random() * 200;
+                    const y = Math.random() * 200;
+                    const size = 1 + Math.random() * 3;
+                    ctx.fillStyle = `hsl(${10 + Math.random() * 20}, 70%, ${30 + Math.random() * 20}%)`;
+                    ctx.fillRect(x, y, size, size);
+                }
+            }
+            
+            // Añadir nombre del planeta
+            const name = document.createElement('div');
+            name.textContent = planet.name + '.png';
+            
+            planetDiv.appendChild(canvas);
+            planetDiv.appendChild(name);
+            container.appendChild(planetDiv);
+            
+            // Crear enlace de descarga
+            const link = document.createElement('a');
+            link.download = `${planet.name}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.textContent = 'Descargar';
+            planetDiv.appendChild(document.createElement('br'));
+            planetDiv.appendChild(link);
+            
+            // Descargar automáticamente
+            link.click();
+        }
+        
+        document.getElementById('generateBtn').addEventListener('click', () => {
+            planets.forEach(planet => {
+                generatePlanetImage(planet);
+            });
+        });
+    </script>
+</body>
+</html>

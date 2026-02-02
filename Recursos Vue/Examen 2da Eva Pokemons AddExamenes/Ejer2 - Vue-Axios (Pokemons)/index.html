@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Vue.js</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./Datos(Vuejs, Axios, Bootstrap)/Bootstrap/bootstrap.min.css">
+    <style>
+        h1{
+		height: 20%;   
+		text-align: center;
+		background-color: coral;
+	}
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          border: 1px solid #dddddd;
+          padding: 8px;
+          width: 30%;
+        }
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>CRUD DE POKEMONS</h1>
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Habilidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Visualizamos los pokemons.
+                Tarea gainean click egitean, burutu bezala agertzen da eta klasea aldatzen diogu
+                -->
+                <tr v-for="pokemon in pokemons"> 
+                    <td v-text="pokemon.name"></td> 
+                    <td v-text="pokemon.type"></td> 
+                    <td v-text="pokemon.ability"></td>
+                    <td><button class="btn btn-danger btn-sm" @click="borrarPokemon(pokemon)">X</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr><hr>
+        <h2>Añadir Pokemon</h2>
+        Nombre:<input type="text" v-model="nombrePokemon">
+        Tipo:<input type="text" v-model="tipoPokemon">
+        Habilidad:<input type="text" v-model="habilidadPokemon">
+        <button class="btn btn-success btn-sm" @click="agregarPokemon">+</button>
+        
+        <hr><hr>
+        <h2>Filtrar Pokemons</h2>
+        <select name="" id="" v-model="selTipo">
+            <option v-for="valor in tiposPokemon" :value="valor">{{valor}}</option>
+        </select>
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Habilidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Visualizamos los pokemons.-->
+                <tr v-for="pokemon in pokemons2"> 
+                    <td v-text="pokemon.name"></td> 
+                    <td v-text="pokemon.type"></td> 
+                    <td v-text="pokemon.ability"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        
+
+        <pre>{{ $data }}</pre>
+    </main>
+    <!-- Vue3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Introducimos las librerias de Axios y VueJS -->
+    <!-- <script src="./Datos(Vuejs, Axios, Bootstrap)/VueJS/vue.global.min.js"></script>
+    <script src="./Datos(Vuejs, Axios, Bootstrap)/Axios/axios.min.js"></script> -->
+    
+    <!-- Accedemos al Script -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

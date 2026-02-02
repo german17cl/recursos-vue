@@ -1,0 +1,94 @@
+{
+  "festivales": [
+    {
+      "nombre": "Sonorama Ribera",
+      "pais": "España",
+      "genero": "indie",
+      "mes": "agosto",
+      "imagen": "verano.png",
+      "precio": 85,
+      "descripción": "Festival indie en Aranda de Duero con ambiente cercano y artistas nacionales e internacionales."
+    },
+    {
+      "nombre": "Primavera Sound",
+      "pais": "España",
+      "genero": "alternativo",
+      "mes": "junio",
+      "imagen": "verano.png",
+      "precio": 195,
+      "descripción": "Evento alternativo en Barcelona con carteles eclécticos y gran proyección internacional."
+    },
+    {
+      "nombre": "Mad Cool",
+      "pais": "España",
+      "genero": "rock",
+      "mes": "julio",
+      "imagen": "verano.png",
+      "precio": 175,
+      "descripción": "Festival madrileño que mezcla rock, pop y electrónica con grandes nombres del panorama mundial."
+    },
+    {
+      "nombre": "Coachella",
+      "pais": "Estados Unidos",
+      "genero": "pop",
+      "mes": "abril",
+      "imagen": "primavera.png",
+      "precio": 200,
+      "descripción": "Uno de los festivales más famosos del mundo, en California, con música, moda y tendencias."
+    },
+    {
+      "nombre": "Tomorrowland",
+      "pais": "Bélgica",
+      "genero": "electrónica",
+      "mes": "julio",
+      "imagen": "verano.png",
+      "precio": 190,
+      "descripción": "Icónico festival de música electrónica en Boom, conocido por su fantasía visual y sonora."
+    },
+    {
+      "nombre": "Glastonbury",
+      "pais": "Reino Unido",
+      "genero": "rock",
+      "mes": "junio",
+      "imagen": "verano.png",
+      "precio": 180,
+      "descripción": "Festival legendario británico con escenarios múltiples y espíritu alternativo desde los 70."
+    },
+    {
+      "nombre": "Rock in Rio",
+      "pais": "Brasil",
+      "genero": "rock",
+      "mes": "septiembre",
+      "imagen": "otono.png",
+      "precio": 150,
+      "descripción": "Gigantesco evento musical en Río de Janeiro con lo mejor del rock y pop internacional."
+    },
+    {
+      "nombre": "BBK Live",
+      "pais": "España",
+      "genero": "indie",
+      "mes": "julio",
+      "imagen": "verano.png",
+      "precio": 145,
+      "descripción": "Festival en el monte Kobetas de Bilbao con vistas únicas y sonidos indie y alternativos."
+    },
+    {
+      "nombre": "Lollapalooza",
+      "pais": "Estados Unidos",
+      "genero": "alternativo",
+      "mes": "agosto",
+      "imagen": "verano.png",
+      "precio": 185,
+      "descripción": "Festival itinerante nacido en Chicago que reúne lo mejor del rock alternativo y pop."
+    },
+    {
+      "nombre": "FIB",
+      "pais": "España",
+      "genero": "indie",
+      "mes": "julio",
+      "imagen": "verano.png",
+      "precio": 160,
+      "descripción": "El Festival Internacional de Benicàssim combina sol, playa y lo mejor del indie internacional."
+    }
+  ]
+}

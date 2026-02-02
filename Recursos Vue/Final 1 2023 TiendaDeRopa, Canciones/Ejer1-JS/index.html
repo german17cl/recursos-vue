@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio JavaScript</title>
+</head>
+<body>
+
+  <h1>Juego de Preguntas de los Grammy 2024</h1>
+
+  <!-- En este div hay que incluir la pregunta -->
+  <div id="preguntaDiv">
+
+  </div>
+
+  <p>Selecciona el cantante/grupo del premio y haz clic en el botón para comprobar:</p>
+  <label for="cantanteSelect">Selecciona cantante/grupo:</label>
+  <select id="cantanteSelect">
+    <option value="">Selecciona opción</option>
+    <option value="Taylor Swift">Taylor Swift</option>
+    <option value="Victoria Monet">Victoria Monet</option>
+    <option value="Billie Eilish">Billie Eilish</option>
+    <option value="Killer Mike">Killer Mike</option>
+    <option value="SZA">SZA</option>
+    <option value="Miley Cirus">Miley Cirus</option>
+    <option value="Boygenius">Boygenius</option>
+    <option value="Metallica">Metallica</option>
+    <option value="Paramore">Paramore</option>
+    <option value="Julian Marley">Julian Marley</option>
+  </select>
+  
+  <button id="btnComprobar" onclick="comprobarRespuesta()">Comprobar</button>
+  
+  <!-- En este ul hay que ir añadiendo los li nuevos cuando la respuesta es correcta -->
+  <ul id="respuestasCorrectas"></ul>
+
+  <script>
+    // Aquí puedes incluir el código JavaScript del ejercicio
+
+    // Array de objetos con información del autor/a y categoría
+    const grammys = [
+      { autor: 'Taylor Swift', categoria: 'Album del año' },
+      { autor: 'Victoria Monet', categoria: 'Artista nuevo' },
+      { autor: 'Billie Eilish', categoria: 'Canción del año' },
+      { autor: 'Killer Mike', categoria: 'Album de Rap' },
+      { autor: 'SZA', categoria: 'Grupo pop' },
+      { autor: 'Miley Cirus', categoria: 'Interpretación vocal solista' },
+      { autor: 'Boygenius', categoria: 'Música Alternativa8' },
+      { autor: 'Metallica', categoria: 'Interpretación de Metal' },
+      { autor: 'Paramore', categoria: 'Album rock' },
+      { autor: 'Julian Marley', categoria: 'Album Reggae' }
+    ];
+
+    let preguntasRealizadas = 0;
+    let aciertos=0;
+    let indiceAleatorio=0
+    juegoPreguntas();
+    
+    
+
+    function comprobarRespuesta(grammyAleatorio){
+        // Obtener la respuesta del usuario desde el campo select
+        const respuestaUsuario = document.getElementById('cantanteSelect').value;
+
+        // Verificar la respuesta del usuario
+        if (respuestaUsuario == grammys[indiceAleatorio].autor) {
+            alert("correcto")
+            aciertos++;
+          // Si la respuesta es correcta, agregar un elemento li al DOM
+          const listaRespuestasCorrectas = document.getElementById('respuestasCorrectas');
+          const nuevoElementoLi = document.createElement('li');
+          nuevoElementoLi.textContent = `¡Correcto! CAntante: ${grammys[indiceAleatorio].autor}, Categoría: ${grammys[indiceAleatorio].categoria}`;
+          listaRespuestasCorrectas.appendChild(nuevoElementoLi);
+          document.getElementById('cantanteSelect').selectedIndex='0'
+        }
+        else {
+            alert(`Incorrecto. El cantante/grupo correcto es: ${grammys[indiceAleatorio].autor}`);
+            document.getElementById('cantanteSelect').selectedIndex='0'
+
+        }
+
+        // Limpiar la pregunta en el div para la próxima pregunta
+        preguntaDiv.textContent = '';
+        preguntasRealizadas++;
+        if (preguntasRealizadas<5){
+            juegoPreguntas();
+        }
+        else{
+            alert(`juego terminado. Has tenido ${aciertos} respuestas correctas`)
+            document.getElementById("btnComprobar").disabled=true
+        }
+
+    }
+    // Función para obtener un elemento aleatorio categoría del array
+    function obtenerGrammy() {
+      indiceAleatorio = Math.floor(Math.random() * grammys.length);
+      //alert("indice "+indiceAleatorio + " Grammy "+ grammys[indiceAleatorio].categoria)
+      //return grammys[indiceAleatorio];
+
+    }
+
+
+    // Función principal del ejercicio
+    function juegoPreguntas() {
+
+        // Obtener una categoria premiada aleatorio
+        obtenerGrammy();
+       
+        // Mostrar la categoría al usuario en el div
+        const preguntaDiv = document.getElementById('preguntaDiv');
+        preguntaDiv.textContent = `Indica el cantante/grupo ganador en la categoría =>  ${grammys[indiceAleatorio].categoria}`;
+    }
+  </script>
+
+</body>
+</html>
