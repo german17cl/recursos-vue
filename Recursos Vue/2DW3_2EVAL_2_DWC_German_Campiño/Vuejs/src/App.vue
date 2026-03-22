@@ -13,7 +13,11 @@ const store = useVuelosStore()
       </div>
       <nav class="nav-links">
         <RouterLink to="/">Inicio</RouterLink>
-        <RouterLink to="/vuelos">Vuelos</RouterLink>
+        <RouterLink to="/vuelos">Ver vuelos</RouterLink>
+        <RouterLink to="/consultar">Consultar reserva</RouterLink>
+        <RouterLink v-if="store.reservas.length" to="/consultar">
+          Consultar vuelo
+        </RouterLink>
       </nav>
     </div>
   </header>
