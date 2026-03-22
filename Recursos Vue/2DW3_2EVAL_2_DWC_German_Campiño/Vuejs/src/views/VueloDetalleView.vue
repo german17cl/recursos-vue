@@ -16,7 +16,14 @@
                 <!-- Mostrar botón solo si hay usuario activo -->
                 <div>
                     <h3>Reservar</h3>
-                    <button @click="reservar">Reservar</button>
+                    <input v-model="email" type="email" placeholder="Email" required>
+                    <input v-model.number="pasajeros" type="number" min="1">
+
+                    <p>Precio total: {{ vuelo.precio * pasajeros }} €</p>
+
+                    <button @click="reservar">Reservar vuelo</button>
+
+                    <p v-if="mensaje">{{ mensaje }}</p>
                 </div>
             </div>
         </div>
@@ -33,7 +40,9 @@ const route = useRoute()
 const router = useRouter()
 
 
-
+const email = ref('')
+const pasajeros = ref(1)
+const mensaje = ref('')
 
 const vuelo = ref(null)
 
@@ -47,7 +56,22 @@ onMounted(async () => {
 function volver() {
     router.push('/vuelos')
 }
+    function reservar() {
+    if (!email.value || pasajeros.value < 1) {
+        mensaje.value = 'Datos inválidos'
+        return
+    }
 
+    const res = store.addReserva(email.value, vuelo.value, pasajeros.value)
+
+    if (res.error) {
+        mensaje.value = res.error
+    } else {
+        mensaje.value = 'Reserva realizada. Código: ' + res.codigoReserva
+        email.value = ''
+        pasajeros.value = 1
+    }
+    }
 
 </script>
 
