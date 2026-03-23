@@ -2,27 +2,38 @@
 <template>
   <div>
       <h1>Vuelos</h1>
-      <h3>Identificador:</h3>
-      <input v-model="filtroTexto" placeholder="Buscar por identificador...">
-      
-      <p>Duración máxima: {{ maxDuracion }} min</p>
-      <input type="range" v-model="maxDuracion" min="0" max="1000">
-      
-      
-      <select v-model="filtroTipoOrigen">
-        <option value="">Todos los orígenes</option>
-        <option v-for="origen in store.origenesUnicos" :key="origen">
-          {{ origen }}
-        </option>
-      </select>
+      <div class="container-filtros">
+        
+        <div class="origen">
+          <h3>Origen:</h3>
+          <select v-model="filtroTipoOrigen">
+            <option value="">Todos los orígenes</option>
+            <option v-for="origen in store.origenesUnicos" :key="origen">
+              {{ origen }}
+            </option>
+          </select>
+        </div>
 
-      <select v-model="filtroTipoDestino">
-        <option value="">Todos los destinos</option>
-        <option v-for="destino in store.destinosUnicos" :key="destino">
-          {{ destino }}
-        </option>
-      </select>
+        <div class="destino">
+          <h3>Destino:</h3>
+          <select v-model="filtroTipoDestino">
+            <option value="">Todos los destinos</option>
+            <option v-for="destino in store.destinosUnicos" :key="destino">
+              {{ destino }}
+            </option>
+          </select>
+        </div>
 
+        <div class="identificador">
+          <h3>Identificador:</h3>
+          <input v-model="filtroTexto" placeholder="Buscar por identificador...">
+        </div>
+
+        <div class="duracion">
+          <h3>Duración máxima: {{ maxDuracion }} min</h3>
+          <input type="range" v-model="maxDuracion" min="0" max="1000">
+        </div>
+      </div>
     
     
     <table border="1">
@@ -115,5 +126,41 @@ const vuelosFiltrados = computed(() => {
 h1 {
   color: #1e3c72;
   margin-bottom: 1rem;
+}
+
+.container-filtros{
+  display:flex;
+  justify-content: space-around;
+  gap:10px;
+  padding:10px;
+  width: 100%;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 1px 2px 20px lightgrey;
+  margin-bottom: 20px;
+}
+
+.identificador{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.origen{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.destino{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.duracion{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
 }
 </style>
