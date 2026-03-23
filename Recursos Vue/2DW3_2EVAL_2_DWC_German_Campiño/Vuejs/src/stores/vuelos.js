@@ -53,14 +53,19 @@ export const useVuelosStore = defineStore('vuelos', () => {
         return vuelos.value.find(v => v.codigo == codigo)
     }
 
-    const vuelosUnicos = computed(() =>
-    [...new Set(vuelos.value.map(v => v.nombre))]
+    const origenesUnicos = computed(() =>
+        [...new Set(vuelos.value.map(v => v.origen))]
+    )
+
+    const destinosUnicos = computed(() =>
+        [...new Set(vuelos.value.map(v => v.destino))]
     )
 
     return {
     vuelos,
     reservas,
-    vuelosUnicos,
+    origenesUnicos,
+    destinosUnicos,
     cargarDatos,
     getVueloById,
     addReserva

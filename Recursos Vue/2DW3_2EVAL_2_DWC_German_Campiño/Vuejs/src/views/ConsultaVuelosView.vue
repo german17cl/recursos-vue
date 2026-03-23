@@ -16,6 +16,9 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useVuelosStore } from '../stores/vuelos'
+
+const store = useVuelosStore()
 
         const email = ref('')
         const codigo = ref('')
