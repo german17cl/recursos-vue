@@ -1,35 +1,55 @@
 
 <template>
   <div>
-    <h1>Vuelos</h1>
-    <h3>Identificador:</h3>
-    <input v-model="filtroTexto" placeholder="Buscar por identificador...">
-    <input type="range" v-model="maxDuracion" min="0" max="1000">
-    <!-- <select v-model="filtroTipoOrigen" placeholder="Origen:">
-      <option value="">Todos</option>
-      <option v-for="origen in store.vuelosUnicos" :key="origen">
-        {{ origen }}
-      </option>
-    </select> -->
-
-    <!-- <select v-model="filtroTipoDestino" placeholder="Destino:">
-      <option value="">Todos</option>
-      <option v-for="destino in store.vuelosUnicos" :key="destino">
-        {{ destino }}
-      </option>
-    </select> -->
-
-    
-    
-    <div v-for="v in vuelosFiltrados" :key="v.id">
-      <br>
-      <p>{{ v.codigo }} / {{ v.origen }} / {{ v.destino }} / {{ v.fechaSalida }} {{ v.horaSalida }} / {{ formatearDuracion(v.duracion) }} / <button @click="verDetalle(v.codigo)">Ver detalle</button></p>
-      <br>
+      <h1>Vuelos</h1>
+      <h3>Identificador:</h3>
+      <input v-model="filtroTexto" placeholder="Buscar por identificador...">
       
+      <p>Duración máxima: {{ maxDuracion }} min</p>
+      <input type="range" v-model="maxDuracion" min="0" max="1000">
+      
+      
+      <select v-model="filtroTipoOrigen">
+        <option value="">Todos los orígenes</option>
+        <option v-for="origen in store.origenesUnicos" :key="origen">
+          {{ origen }}
+        </option>
+      </select>
+
+      <select v-model="filtroTipoDestino">
+        <option value="">Todos los destinos</option>
+        <option v-for="destino in store.destinosUnicos" :key="destino">
+          {{ destino }}
+        </option>
+      </select>
 
     
     
-    </div>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Origen</th>
+          <th>Destino</th>
+          <th>Fecha</th>
+          <th>Duración</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr v-for="v in vuelosFiltrados" :key="v.codigo">
+          <td>{{ v.codigo }}</td>
+          <td>{{ v.origen }}</td>
+          <td>{{ v.destino }}</td>
+          <td>{{ v.fechaSalida }} {{ v.horaSalida }}</td>
+          <td>{{ formatearDuracion(v.duracion) }}</td>
+          <td>
+            <button @click="verDetalle(v.codigo)">Ver detalle</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
