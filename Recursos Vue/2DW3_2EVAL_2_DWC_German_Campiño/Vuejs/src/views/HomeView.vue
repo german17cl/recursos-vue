@@ -9,8 +9,8 @@ import { RouterLink } from 'vue-router'
         <h1>Txurdinaga Fly</h1>
         <p class="subtitle">Explora el mundo con la mejor gestión de vuelos.</p>
         <div class="cta-group">
-          <RouterLink to="" class="boton primario">Ver vuelos</RouterLink>
-          <RouterLink to="" class="boton secundario">Consultar reserva</RouterLink>
+          <RouterLink to="/vuelos" class="boton primario">Ver vuelos</RouterLink>
+          <RouterLink to="/consultar" class="boton secundario">Consultar reserva</RouterLink>
         </div>
       </div>
     </section>

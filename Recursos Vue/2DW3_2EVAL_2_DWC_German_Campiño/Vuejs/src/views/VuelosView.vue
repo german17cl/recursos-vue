@@ -163,4 +163,53 @@ h1 {
   flex-direction: column;
   width: 400px;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+thead {
+  background: linear-gradient(135deg, #0288d1, #26c6da);
+  color: white;
+}
+
+th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+button {
+  background-color: #0288d1;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #026aa7;
+  transform: scale(1.05);
+}
 </style>
