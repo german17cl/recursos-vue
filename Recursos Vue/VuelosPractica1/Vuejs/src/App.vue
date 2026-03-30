@@ -13,9 +13,9 @@ const store = useVuelosStore()
       </div>
       <nav class="nav-links">
         <RouterLink to="/">Inicio</RouterLink>
-        <RouterLink to=" ">Ver vuelos</RouterLink>
-        <RouterLink to=" ">Consultar vuelo</RouterLink>
-        <RouterLink> Consultar vuelo </RouterLink>
+        <RouterLink to="/vuelos">Ver vuelos</RouterLink>
+        <RouterLink to="/consultar">Consultar vuelo</RouterLink>
+        
       </nav>
     </div>
   </header>
