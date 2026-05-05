@@ -1,53 +1,59 @@
-// Toda la lógica de la aplicación se encuentra en este archivo, app.js
-
 const btn = document.getElementById("calcular")
 
 btn.addEventListener("click", calcularTotal)
 
 function calcularTotal() {
-    const codigoVueloInput = document.getElementById("codigo")
-    const claseSelect = document.getElementById("clase")
-    const pesoInput = document.getElementById("peso")
+    const codigo = document.getElementById("codigo").value.trim()
+    const clase = document.getElementById("clase").value
+    const peso = parseFloat(document.getElementById("peso").value)
+    const resultado = document.getElementById("resultado")
 
-    const codigo = codigoVueloInput.value.trim()
-    const clase = claseSelect.value
-    const peso = pesoInput.value.trim()
+    resultado.innerHTML = ""
 
-    const mensajeError = document.getElementById("resultado")
-
-    mensajeError.textContent = ""
-
-    const regexCodigo = /^[A-Za-z\s]+$/
-
-    if(!regexCodigo.test(codigo)){
-        mensajeError.textContent =
-        "Código de vuelo no válido. Formato: AA1234"
+    // VALIDACIÓN CÓDIGO 
+    // El código debe tener el formato AA9999 (2 letras mayúsculas seguidas de 4 dígitos)
+    const regexCodigo = /^[A-Z]{2}\d{4}$/
+    if (!regexCodigo.test(codigo)) {
+        resultado.textContent = "Código inválido (AA9999)"
         return
     }
 
-    if(peso < 0){
-        mensajeError.textContent =
-        "El peso debe ser un número positivo"
+    // VALIDACIÓN PESO
+    if (isNaN(peso) || peso <= 0 || peso >= 100) {
+        resultado.textContent = "El peso debe estar entre 0 y 100 kg"
+        return
     }
 
+    // CREAR OBJETO
     const reserva = new Reserva(codigo, clase, peso)
 
-    const field = document.createElement("div")
-    field.id = "field"
+    // CÁLCULOS
 
+    // Exceso de equipaje: 20 kg gratis, cada kg extra 10 €
+    const exceso = Math.max(0, peso - 20)
     
+    const cargoExceso = exceso * 10
 
-    const total = CargoPorExceso + CargoPorClase
+    // Cargo clase Business: 50 €, Economy: 0 €
+    const cargoClase = clase === "Business" ? 50 : 0
+    
+    const total = cargoExceso + cargoClase
 
-    const totalElemento = document.createElement("h2")
-    totalElemento.textContent = "Exceso: ", total, " kg"
+    // Párrafo 1: exceso
+    const p1 = document.createElement("p")
+    p1.textContent = `Exceso de equipaje: ${exceso} kg`
 
+    // Párrafo 2: precio
+    const p2 = document.createElement("p")
+    p2.textContent = `Precio total: ${total} €`
 
-    field.appendChild(totalElemento)
+    // color según regla
+    p2.style.color = total === 0 ? "green" : "red"
 
-    document.getElementById("resultado").appendChild(field)
+    resultado.appendChild(p1)
+    resultado.appendChild(p2)
 
-    codigoVueloInput.value = ""
-    pesoInput.value = ""
-
+    // limpiar inputs
+    document.getElementById("codigo").value = ""
+    document.getElementById("peso").value = ""
 }
