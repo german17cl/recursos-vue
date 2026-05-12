@@ -10,7 +10,6 @@ export const useVuelosStore = defineStore('vuelos', () => {
     const reservas = ref ([])
 
     //Actions
-    
     async function cargarDatos(){
         if(cargado.value)return
         try {
@@ -29,21 +28,48 @@ export const useVuelosStore = defineStore('vuelos', () => {
         return vuelos.value.find(v => v.codigo == codigo)
     }
 
+    const origenesUnicos = computed(() =>
+        [...new Set(vuelos.value.map(v => v.origen))]
+    )
+
+    const destinosUnicos = computed(() =>
+        [...new Set(vuelos.value.map(v => v.destino))]
+    )
     
 
-    // function generarCodigo(){
-    //     return Math.random().toString(36).substring(2, 8)
-    // }
+    //Generar codigo para reserva 
+    function generarCodigo(){
+        return Math.random().toString(36).substring(2, 8)
+    }
 
-    // function addReserva(email, vuelo, pasajeros){
-        
-    //     const existe = reservas.value. 
-    // }
+    function addReserva( email, vuelo, pasajeros){
+        const existe = reservas.value.find(r =>
+            r.email === email && r.vuelo.codigo === vuelo.codigo
+        )
+
+        if (existe) {
+            return { error: 'Ya tienes una reserva con ese e-mail para ese vuelo' }
+        }
+
+        const codigoReserva = generarCodigo()
+
+        reservas.value.push({
+            email,
+            vuelo,
+            pasajeros,
+            codigoReserva
+        })
+        return { codigoReserva }
+    }
 
     return {
         vuelos,
+        reservas,
+        origenesUnicos,
+        destinosUnicos,
         cargarDatos,
-        getVueloById
+        getVueloById,
+        addReserva
     }
 
     
