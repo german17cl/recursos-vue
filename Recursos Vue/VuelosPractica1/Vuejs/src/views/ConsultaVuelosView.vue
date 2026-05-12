@@ -4,7 +4,7 @@
     <h1>Consultar vuelos</h1>
 
     <!-- FORMULARIO -->
-    <div class="form-box">
+     <div class="form-box">
       <input v-model="email" placeholder="Email">
       <input v-model="codigo" placeholder="Código reserva (opcional)">
 
@@ -48,7 +48,6 @@
     <p v-else-if="buscado" class="mensaje">
       No hay resultados para esa búsqueda
     </p>
-
   </div>
 </template>
 
@@ -57,41 +56,48 @@ import { ref } from 'vue'
 import { useVuelosStore } from '../stores/vuelos'
 import { useRouter } from 'vue-router'
 
+
 const router = useRouter()
 
 const store = useVuelosStore()
 
-        const email = ref('')
-        const codigo = ref('')
-        const resultado = ref([])
-        const buscado = ref(false)
+const email = ref('')
 
-        function consultar() {
-        buscado.value = true
+const codigo = ref('')
 
-        if (codigo.value) {
-            const r = store.reservas.find(r =>
-            r.email === email.value && r.codigoReserva === codigo.value
-            )
-            resultado.value = r ? [r] : []
-        } else {
-            resultado.value = store.reservas.filter(r =>
-            r.email === email.value
-            )
-        }
-        }
+const resultado = ref([])
 
-    function formatearDuracion(min) {
-        const h = Math.floor(min / 60)
-        const m = min % 60
-        return `${h}h ${m}m`
+const buscado = ref(false)
+
+  function consultar(){
+    buscado.value = true
+
+    if(codigo.value){
+      const r = store.reservas.find(r =>
+        r.email === email.value && r.codigoReserva === codigo.value
+      )
+      resultado.value = r ? [r] : []
+    } else {
+      resultado.value = store.reservas.filter(r =>
+      r.email === email.value
+      )
     }
+  }
 
-    function verDetalle(codigo) {
+  function formatearDuracion(min){
+    const h = Math.floor(min / 60)
+    const m = min % 60
+    return `${h}h ${m}m`
+  }
+
+  function verDetalle(codigo){
     router.push(`/vuelos/${codigo}`)
-    }
-    </script>
-    <style>
+  }
+
+</script>
+
+
+  <style>
     td button {
   background-color: #0288d1;
   color: white;

@@ -18,6 +18,7 @@ const store = useVuelosStore()
         <RouterLink v-if="store.reservas.length" to="/consultar">
           Consultar vuelo
         </RouterLink>
+        
       </nav>
     </div>
   </header>

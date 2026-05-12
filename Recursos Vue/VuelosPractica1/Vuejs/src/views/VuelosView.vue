@@ -34,9 +34,7 @@
           <input type="range" v-model="maxDuracion" min="0" max="1000">
         </div>
       </div>
-    
-    
-    <table border="1">
+      <table border="1">
       <thead>
         <tr>
           <th>Código</th>
@@ -66,26 +64,27 @@
 
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted} from 'vue'
 import { useVuelosStore } from '../stores/vuelos'
 import { useRouter } from 'vue-router'
+
 const router = useRouter()
 
 const store = useVuelosStore()
-
 const filtroTexto = ref('')
 const filtroTipoDestino = ref('')
-const filtroTipoOrigen= ref('')
+const filtroTipoOrigen = ref('')
 const maxDuracion = ref(1000)
+
 
 onMounted(() => {
   store.cargarDatos()
 })
 
-const vuelosFiltrados = computed(() => {
-  return store.vuelos.filter(v => {
-
-    const textoOk =
+const vuelosFiltrados = computed(() =>{
+  return store.vuelos.filter( v => {
+    
+    const textoOk = 
       v.codigo.toLowerCase().includes(filtroTexto.value.toLowerCase())
 
     const origenOk =
@@ -95,26 +94,25 @@ const vuelosFiltrados = computed(() => {
       !filtroTipoDestino.value || v.destino === filtroTipoDestino.value
 
     const duracionOk =
-      v.duracion <= maxDuracion.value
+    v.duracion <= maxDuracion.value
 
     return textoOk && origenOk && destinoOk && duracionOk
   })
 })
 
+
 // Navegar a detalle
-
-
-  function verDetalle(codigo) {
-      router.push(`/vuelos/${codigo}`)
+  function verDetalle(codigo){
+    router.push(`/vuelos/${codigo}`)
   }
 
-  function formatearDuracion(min) {
+  function formatearDuracion(min){
     const h = Math.floor(min / 60)
     const m = min % 60
     return `${h}h ${m}m`
   }
 
-  
+
 </script>
 
 

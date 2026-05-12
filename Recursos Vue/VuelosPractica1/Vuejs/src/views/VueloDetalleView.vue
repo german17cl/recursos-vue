@@ -82,35 +82,34 @@ const store = useVuelosStore()
 const route = useRoute()
 const router = useRouter()
 
-
 const email = ref('')
 const pasajeros = ref(1)
 const mensaje = ref('')
 
 const vuelo = ref(null)
 
-// Cargar película al montar
-onMounted(async () => {
+onMounted(async () =>{
     await store.cargarDatos()
     const codigo = route.params.codigo
     vuelo.value = store.getVueloById(codigo)
 })
 
-function volver() {
+function volver(){
     router.push('/vuelos')
 }
-function reservar() {
-    if (!email.value || pasajeros.value < 1) {
+
+function reservar(){
+    if (!email.value || pasajeros.value < 1){
         mensaje.value = 'Datos inválidos'
         return
     }
 
     const res = store.addReserva(email.value, vuelo.value, pasajeros.value)
 
-    if (res.error) {
+    if ( res.error){
         mensaje.value = res.error
     } else {
-        mensaje.value = 'Reserva realizada. Código: ' + res.codigoReserva
+        mensaje. value = 'Reserva realizada. Código: ' + res.codigoReserva
         email.value = ''
         pasajeros.value = 1
     }
