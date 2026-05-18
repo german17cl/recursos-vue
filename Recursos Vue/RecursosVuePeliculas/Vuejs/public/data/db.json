@@ -1,0 +1,76 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "nombre": "Carlos",
+            "email": "carlos@mail.com",
+            "password": "1234"
+        },
+        {
+            "id": 2,
+            "nombre": "Laura",
+            "email": "laura@mail.com",
+            "password": "1234"
+        }
+    ],
+    "generos": [
+        {
+            "id": 1,
+            "nombre": "Acción"
+        },
+        {
+            "id": 2,
+            "nombre": "Ciencia Ficción"
+        },
+        {
+            "id": 3,
+            "nombre": "Drama"
+        },
+        {
+            "id": 4,
+            "nombre": "Animación"
+        }
+    ],
+    "peliculas": [
+        {
+            "id": 1,
+            "titulo": "Interstellar",
+            "generoId": 2,
+            "anio": 2014,
+            "imagen": "interstellar.jpg",
+            "descripcion": "Viaje espacial para salvar a la humanidad."
+        },
+        {
+            "id": 2,
+            "titulo": "Interstellar2",
+            "generoId": 3,
+            "anio": 2014,
+            "imagen": "interstellar.jpg",
+            "descripcion": "Viaje espacial para salvar a la humanidad."
+        },
+        {
+            "id": 3,
+            "titulo": "El Caballero Oscuro",
+            "generoId": 1,
+            "anio": 2008,
+            "imagen": "batman.jpg",
+            "descripcion": "Batman se enfrenta al Joker."
+        },
+        {
+            "id": 4,
+            "titulo": "Coco",
+            "generoId": 4,
+            "anio": 2017,
+            "imagen": "coco.jpg",
+            "descripcion": "Un niño viaja al mundo de los muertos."
+        },
+        {
+            "id": 5,
+            "titulo": "Forrest Gump",
+            "generoId": 3,
+            "anio": 1994,
+            "imagen": "forrestgump.jpg",
+            "descripcion": "Historia de vida de Forrest."
+        }
+    ]
+}
